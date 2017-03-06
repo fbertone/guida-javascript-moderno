@@ -1,6 +1,10 @@
 # Guida alla creazione di un progetto Javascript Moderno
 
-[![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch) [![Join the chat at https://gitter.im/js-stack-from-scratch/Lobby](https://badges.gitter.im/js-stack-from-scratch/Lobby.svg)](https://gitter.im/js-stack-from-scratch/Lobby)
+[![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch)
+[![Release](https://img.shields.io/github/release/verekia/js-stack-from-scratch.svg?style=flat-square)](https://github.com/verekia/js-stack-from-scratch/releases)
+[![Dependencies](https://img.shields.io/david/verekia/js-stack-boilerplate.svg?style=flat-square)](https://david-dm.org/verekia/js-stack-boilerplate)
+[![Dev Dependencies](https://img.shields.io/david/dev/verekia/js-stack-boilerplate.svg?style=flat-square)](https://david-dm.org/verekia/js-stack-boilerplate?type=dev)
+[![Join the chat at https://gitter.im/js-stack-from-scratch/Lobby](https://badges.gitter.im/js-stack-from-scratch/Lobby.svg)](https://gitter.im/js-stack-from-scratch/Lobby)
 
 [![React](/img/react-padded-90.png)](https://facebook.github.io/react/)
 [![Redux](/img/redux-padded-90.png)](http://redux.js.org/)
@@ -24,27 +28,29 @@ Una buona parte dello stack descritto in questa guida utilizza React. Se sei un 
 
 Esempi di codice sono inclusi in ogni capitolo, puoi avviarli utilizzando i comandi `yarn && yarn start`. Ti consiglio comunque di riscrivere tutto per conto tuo seguendo le **istruzioni passo a passo**.
 
-Il codice completo è disponibile in questo repository: [JS-Stack-Boilerplate](https://github.com/verekia/js-stack-boilerplate). Funziona su Linux, macOS, e Windows.
+Il codice completo è disponibile in questo repository: [JS-Stack-Boilerplate](https://github.com/verekia/js-stack-boilerplate) e nelle [release](https://github.com/verekia/js-stack-from-scratch/releases).
+
+Funziona su Linux, macOS, e Windows.
 
 ## Indice dei contenuti
 
-[01 - Node, Yarn, `package.json`](/tutorial/01-node-yarn-package-json)
+[01 - Node, Yarn, `package.json`](/tutorial/01-node-yarn-package-json.md#readme)
 
-[02 - Babel, ES6, ESLint, Flow, Jest, Husky](/tutorial/02-babel-es6-eslint-flow-jest-husky)
+[02 - Babel, ES6, ESLint, Flow, Jest, Husky](/tutorial/02-babel-es6-eslint-flow-jest-husky.md#readme)
 
-[03 - Express, Nodemon, PM2](/tutorial/03-express-nodemon-pm2)
+[03 - Express, Nodemon, PM2](/tutorial/03-express-nodemon-pm2.md#readme)
 
-[04 - Webpack, React, HMR](/tutorial/04-webpack-react-hmr)
+[04 - Webpack, React, HMR](/tutorial/04-webpack-react-hmr.md#readme)
 
-[05 - Redux, Immutable, Fetch](/tutorial/05-redux-immutable-fetch)
+[05 - Redux, Immutable, Fetch](/tutorial/05-redux-immutable-fetch.md#readme)
 
-[06 - React Router, Server-Side Rendering, Helmet](/tutorial/06-react-router-ssr-helmet)
+[06 - React Router, Server-Side Rendering, Helmet](/tutorial/06-react-router-ssr-helmet.md#readme)
 
-[07 - Socket.IO](/tutorial/07-socket-io)
+[07 - Socket.IO](/tutorial/07-socket-io.md#readme)
 
-[08 - Bootstrap, JSS](/tutorial/08-bootstrap-jss)
+[08 - Bootstrap, JSS](/tutorial/08-bootstrap-jss.md#readme)
 
-[09 - Travis, Coveralls, Heroku](/tutorial/09-travis-coveralls-heroku)
+[09 - Travis, Coveralls, Heroku](/tutorial/09-travis-coveralls-heroku.md#readme)
 
 ## Prossimamente
 
