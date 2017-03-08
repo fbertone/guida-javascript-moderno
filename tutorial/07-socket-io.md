@@ -174,4 +174,4 @@ What happens here should not be surprising if you understood well what we did on
 
 Next section: [08 - Bootstrap, JSS](08-bootstrap-jss.md#readme)
 
-Back to the [previous section](06-react-router-ssr-helmet.md#readme) or the [table of contents](https://github.com/verekia/js-stack-from-scratch#table-of-contents).
+Back to the [previous section](06-react-router-ssr-helmet.md#readme)  o all'[indice dei contenuti](https://github.com/fbertone/guida-javascript-moderno#indice-dei-contenuti).
