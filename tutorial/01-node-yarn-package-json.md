@@ -19,9 +19,9 @@ sudo apt-get install -y nodejs
 
 Ti serve una versione di Node > 6.5.0.
 
-## NVM
+## Node Version Management Tools
 
-Se Node è già installato, o se vuoi maggiore flessibilità, installa NVM ([Node Version Manager](https://github.com/creationix/nvm)), e fai in modo che NVM installi e configuri l'ultima versione di Node per te.
+Se ti serve la flessibilità di poter utilizzare versioni multiple di Node, installa [NVM](https://github.com/creationix/nvm)) oppure [tj/n](https://github.com/tj/n).
 
 ## NPM
 

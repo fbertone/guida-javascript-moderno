@@ -21,7 +21,9 @@ For this reason, I'm going to make the tradeoff of integrating the official rele
 
 - Delete `public/css/style.css`
 
-- Download the latest official release from Bootstrap and put `bootstrap.min.css` and `bootstrap.min.css.map` in the `public/css` folder.
+- Run `yarn add bootstrap@4.0.0-alpha.6`
+
+- Copy `bootstrap.min.css` and `bootstrap.min.css.map` from `node_modules/bootstrap/dist` to your `public/css` folder.
 
 - Edit `src/server/render-app.jsx` like so:
 
@@ -33,7 +35,7 @@ For this reason, I'm going to make the tradeoff of integrating the official rele
 
 Now that we have Bootstrap's styles loaded on our page, we need the JavaScript behavior for the components.
 
-- Run `yarn add jquery tether bootstrap@4.0.0-alpha.6`
+- Run `yarn add jquery tether`
 
 - Edit `src/client/index.jsx` like so:
 
@@ -264,7 +266,7 @@ const App = () =>
 
 This is an example of a *React inline style*.
 
-This will translate into: `<div style="padding-top:54px;">` in your DOM. We need this style to push the content under the navigation bar, but that's what's important here. [React inline styles](https://speakerdeck.com/vjeux/react-css-in-js) are a great way to isolate your component's styles from the global CSS namespace, but it comes at a price: You cannot use some native CSS features like `:hover`, Media Queries, animations, or `font-face`. That's the reason why we're going to integrate a CSS-in-JS library, JSS, later in this chapter. For now, just keep in mind that you can use React inline styles this way if you don't need `:hover` and such.
+This will translate into: `<div style="padding-top:54px;">` in your DOM. We need this style to push the content under the navigation bar, but that's what's important here. [React inline styles](https://speakerdeck.com/vjeux/react-css-in-js) are a great way to isolate your component's styles from the global CSS namespace, but it comes at a price: You cannot use some native CSS features like `:hover`, Media Queries, animations, or `font-face`. That's [one of the reasons](https://github.com/cssinjs/jss/blob/master/docs/benefits.md#compared-to-inline-styles) we're going to integrate a CSS-in-JS library, JSS, later in this chapter.
 
 - Edit `src/shared/component/nav.jsx` like so:
 
@@ -425,6 +427,10 @@ const styles = {
       color: 'red',
     },
   },
+  specialButton: {
+    composes: ['btn', 'btn-primary'],
+    backgroundColor: 'limegreen',
+  },
 }
 
 const HomePage = ({ classes }: { classes: Object }) =>
@@ -433,6 +439,7 @@ const HomePage = ({ classes }: { classes: Object }) =>
     <h3 className="mb-3">JSS</h3>
     <p className={classes.hoverMe}>Hover me.</p>
     <p className={classes.resizeMe}>Resize the window.</p>
+    <button className={classes.specialButton}>Composition</button>
   </div>
   // [...]
 
@@ -445,7 +452,7 @@ Unlike React inline styles, JSS uses classes. You pass styles to `injectSheet` a
 
 **Note**: In production mode, the `data-meta` is obfuscated. Sweet!
 
-If you hover over the "Hover me" label, it should turn red. If you resize your browser window to be narrower than 800px, the "Resize your window" label should turn red.
+If you hover over the "Hover me" label, it should turn red. If you resize your browser window to be narrower than 800px, the "Resize your window" label should turn red. The green button is extending Bootstrap's CSS classes using JSS' `composes` property.
 
 Next section: [09 - Travis, Coveralls, Heroku](09-travis-coveralls-heroku.md#readme)
 

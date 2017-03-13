@@ -59,9 +59,9 @@ export default {
     './src/client',
   ],
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/js'),
-    publicPath: `http://localhost:${WDS_PORT}/dist/js/`,
+    filename: 'js/bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: isProd ? '/static/' : `http://localhost:${WDS_PORT}/dist/`,
   },
   module: {
     rules: [
@@ -78,7 +78,7 @@ export default {
 }
 ```
 
-Questo file serve a descrivere in che modo assemblare il nostro bundle: `entry` è il punto di accesso della nostra app, `output.filename` è il nome del file di bundle da generare, `output.path` e `output.publicPath` descrivono la cartella di destinazione e l'URL. Mettiamo il bundle nella cartella `dist`, che conterrà i file generati automaticamente (a differenza del CSS che abbiamo creato in precedenza e si trova in `public`). `module.rules` è dove spieghi a Webpack di applicare alcune operazioni a certi tipi di file. Qua diciamo che vogliamo che tutti i file `.js` e `.jsx` (per React) ad esclusione di quelli in `node_modules` passino attraverso un modulo chiamato `babel-loader`. Vogliamo inoltre che queste due estensioni vengano utilizzate per la risoluzione dei moduli (`resolve`). Infine definiamo una porta per il Webpack Dev Server.
+Questo file serve a descrivere in che modo assemblare il nostro bundle: `entry` è il punto di accesso della nostra app, `output.filename` è il nome del file di bundle da generare, `output.path` e `output.publicPath` descrivono la cartella di destinazione e l'URL. Mettiamo il bundle nella cartella `dist`, che conterrà i file generati automaticamente (a differenza del CSS che abbiamo creato in precedenza e che si trova in `public`). `module.rules` è dove spieghi a Webpack di applicare alcune operazioni a certi tipi di file. Qua diciamo che vogliamo che tutti i file `.js` e `.jsx` (per React) ad esclusione di quelli in `node_modules` passino attraverso un modulo chiamato `babel-loader`. Vogliamo inoltre che queste due estensioni vengano utilizzate per la risoluzione dei moduli (`resolve`) quando ne facciamo un `import`. Infine definiamo una porta per il Webpack Dev Server.
 
 **Nota**: L'estensione `.babel.js` è una funzionalità di Webpack che permette di applicare le trasformazioni di Babel a questo file di configurazione.
 
@@ -103,7 +103,7 @@ Aggiorniamo gli `scripts` per implementare il tutto, e migliorare anche altri ta
   "dev:wds": "webpack-dev-server --progress",
   "prod:build": "rimraf lib dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
   "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
-  "prod:stop": "pm2 delete all",
+  "prod:stop": "pm2 delete server",
   "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
   "test": "yarn lint && flow && jest --coverage",
   "precommit": "yarn test",

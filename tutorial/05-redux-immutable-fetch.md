@@ -44,9 +44,7 @@ console.log(immutablePerson)
  */
 ```
 
-- Run `yarn add immutable`
-
-**Note**: Due to the implementation of ImmutableJS, Flow does not accept importing it with `import Immutable from 'immutable'`, so use this syntax instead: `import * as Immutable from 'immutable'`. Let's cross fingers for a [fix](https://github.com/facebook/immutable-js/issues/863) soon.
+- Run `yarn add immutable@4.0.0-rc.2`
 
 ## Redux
 
@@ -75,7 +73,8 @@ This file exposes an *action*, `SAY_HELLO`, and its *action creator*, `sayHello`
 ```js
 // @flow
 
-import * as Immutable from 'immutable'
+import Immutable from 'immutable'
+import type { fromJS as Immut } from 'immutable'
 
 import { SAY_HELLO } from '../action/hello'
 
@@ -83,7 +82,7 @@ const initialState = Immutable.fromJS({
   message: 'Initial reducer message',
 })
 
-const helloReducer = (state: Object = initialState, action: { type: string, payload: any }) => {
+const helloReducer = (state: Immut = initialState, action: { type: string, payload: any }) => {
   switch (action.type) {
     case SAY_HELLO:
       return state.set('message', action.payload)
@@ -95,7 +94,7 @@ const helloReducer = (state: Object = initialState, action: { type: string, payl
 export default helloReducer
 ```
 
-In this file we initialize the state of our reducer with an Immutable Map containing one property, `message`, set to `Initial reducer message`. The `helloReducer` handles `SAY_HELLO` actions by simply setting the new `message` with the action payload. The Flow annotation for `action` destructures it into a `type` and a `payload`. The `payload` can be of `any` type. It looks funky if you've never seen this before, but it remains pretty understandable. Note the usage of `Immutable.fromJS()` and `set()` as seen before.
+In this file we initialize the state of our reducer with an Immutable Map containing one property, `message`, set to `Initial reducer message`. The `helloReducer` handles `SAY_HELLO` actions by simply setting the new `message` with the action payload. The Flow annotation for `action` destructures it into a `type` and a `payload`. The `payload` can be of `any` type. It looks funky if you've never seen this before, but it remains pretty understandable. For the type of `state`, we use the `import type` Flow instruction to get the return type of `fromJS`. We rename it to `Immut` for clarity, because `state: fromJS` would be pretty confusing. The `import type` line will get stripped out like any other Flow annotation. Note the usage of `Immutable.fromJS()` and `set()` as seen before.
 
 ## React-Redux
 
@@ -114,7 +113,12 @@ In this section we are going to create *Components* and *Containers*.
 
 import React, { PropTypes } from 'react'
 
-const Button = ({ label, handleClick }: { label: string, handleClick: Function }) =>
+type Props = {
+  label: string,
+  handleClick: Function,
+}
+
+const Button = ({ label, handleClick }: Props) =>
   <button onClick={handleClick}>{label}</button>
 
 Button.propTypes = {
@@ -125,7 +129,7 @@ Button.propTypes = {
 export default Button
 ```
 
-**Note**: You can see another case of destructuring with Flow annotations here. If `props` contains `handleClick`, instead of writing `const Button = (props) => { props.handleClick() }`, we write `const Button = ({ handleClick }: { handleClick: Function }) => { handleClick() }`. The syntax is a bit cumbersome but worth it.
+**Note**: You can see a case of Flow *type alias* here. We define the `Props` type before annotating our component's destructured `props` with it.
 
 - Create a `src/client/component/message.jsx` file containing:
 
@@ -134,7 +138,11 @@ export default Button
 
 import React, { PropTypes } from 'react'
 
-const Message = ({ message }: { message: string }) =>
+type Props = {
+  message: string,
+}
+
+const Message = ({ message }: Props) =>
   <p>{message}</p>
 
 Message.propTypes = {
@@ -412,7 +420,8 @@ Let's handle these different actions in `src/client/reducer/hello.js`:
 ```js
 // @flow
 
-import * as Immutable from 'immutable'
+import Immutable from 'immutable'
+import type { fromJS as Immut } from 'immutable'
 
 import {
   SAY_HELLO,
@@ -426,7 +435,7 @@ const initialState = Immutable.fromJS({
   messageAsync: 'Initial reducer message for async call',
 })
 
-const helloReducer = (state: Object = initialState, action: { type: string, payload: any }) => {
+const helloReducer = (state: Immut = initialState, action: { type: string, payload: any }) => {
   switch (action.type) {
     case SAY_HELLO:
       return state.set('message', action.payload)
@@ -536,7 +545,7 @@ In order to isolate the logic that is specific to `action/hello.js` we are going
 
 - Run `yarn add --dev redux-mock-store fetch-mock`
 
-- Create a `src/client/action/hello.test.js` containing:
+- Create a `src/client/action/hello.test.js` file containing:
 
 ```js
 import fetchMock from 'fetch-mock'
