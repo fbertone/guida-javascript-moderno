@@ -152,6 +152,36 @@ Ti raccomando di leggere la [documentazione di ESLint sui punti e virgola](http:
 
 Sono consapevole che alcuni di voi vorranno continuare ad utilizzare i punti e virgola, il che andrà in conflitto con il codice disponibile in questo tutorial. Se stai usando questa guida semplicemente per imparare, sono sicuro che protrai seguirla così com'è, e tornerai ad utilizzare i punti e virgola nei tuoi progetti reali. Se vuoi utilizzare il codice fornito nel tutorial come un boilerplate avrai tuttavia bisogno di affettuare un po' di modifiche, il che dovrebbe essere abbastanza veloce impostando ESLint per l'utilizzo con i punti e virgola e seguendo le sue notifiche. Mi scuso se ti troverai in questa situazione.
 
+### Compat
+
+[Compat](https://github.com/amilajack/eslint-plugin-compat) è un plugin per ESLint che ti avvisa se stai utilizzando della API JavaScript che non sono disponibili nei browser che devi supportare. Utilizza [Browserslist](https://github.com/ai/browserslist), che si basa su [Can I Use](http://caniuse.com/).
+
+- Esegui `yarn add --dev eslint-plugin-compat`
+
+- Aggiungi quanto segue al file `package.json`, per indicare che vogliamo supportare i browser che hanno almeno 1% del market share:
+
+```json
+"browserslist": ["> 1%"],
+```
+
+- Modifica il file `.eslintrc.json` così:
+
+```json
+{
+  "extends": "airbnb",
+  "plugins": [
+    "compat"
+  ],
+  "rules": {
+    "semi": [2, "never"],
+    "no-unexpected-multiline": 2,
+    "compat/compat": 2
+  }
+}
+```
+
+Puoi testare il plugin utilizzando ad esempio `navigator.serviceWorker` oppure `fetch` nel codice, che dovrebbe far partire un warning di ESLint.
+
 ### ESLint nel tuo editor
 
 Questo capitolo ti spiega come utilizzare ESLint nel terminale, che è ottimo per riconoscere gli errori durante la compilazione / prima di effettuare il push, ma probabilmente vorrai integrarlo anche nel tuo IDE per avere un feedback immediato. NON usare il linting nativo del tuo IDE per il codice ES6. Configuralo in modo che l'eseguibile da utilizzare per il linting sia quello presente nella cartella `node_modules`. In questo modo può utilizzare tutte le configurazioni del tuo progetto, il preset Airbnb, etc. In caso contrario avrai invece semplicemente un linting ES6 generico.
@@ -186,11 +216,13 @@ Per il momento, il nostro codice JavaScript è un codice ES6 valido. Flow può a
     "plugin:flowtype/recommended"
   ],
   "plugins": [
-    "flowtype"
+    "flowtype",
+    "compat"
   ],
   "rules": {
     "semi": [2, "never"],
-    "no-unexpected-multiline": 2
+    "no-unexpected-multiline": 2,
+    "compat/compat": 2
   }
 }
 ```

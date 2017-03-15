@@ -111,7 +111,7 @@ In this section we are going to create *Components* and *Containers*.
 ```js
 // @flow
 
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 type Props = {
   label: string,
@@ -120,11 +120,6 @@ type Props = {
 
 const Button = ({ label, handleClick }: Props) =>
   <button onClick={handleClick}>{label}</button>
-
-Button.propTypes = {
-  label: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
-}
 
 export default Button
 ```
@@ -136,7 +131,7 @@ export default Button
 ```js
 // @flow
 
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 type Props = {
   message: string,
@@ -144,10 +139,6 @@ type Props = {
 
 const Message = ({ message }: Props) =>
   <p>{message}</p>
-
-Message.propTypes = {
-  message: PropTypes.string.isRequired,
-}
 
 export default Message
 ```
@@ -369,6 +360,16 @@ What we need now is to create the `sayHelloAsync` action.
 We are going to use `fetch` to make calls to the server from the client. `fetch` is not supported by all browsers yet, so we are going to need a polyfill. `isomorphic-fetch` is a polyfill that makes it work cross-browsers and in Node too!
 
 - Run `yarn add isomorphic-fetch`
+
+Since we're using `eslint-plugin-compat`, we need to indicate that we are using a polyfill for `fetch` to not get warnings from using it.
+
+- Add the following to your `.eslintrc.json` file:
+
+```json
+"settings": {
+  "polyfills": ["fetch"]
+},
+```
 
 ### 3 asynchronous actions
 
