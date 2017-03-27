@@ -175,7 +175,7 @@ Essendo questa cartella `lib` generata automaticamente, è una buona pratica rip
 
 - Esegui `yarn add --dev rimraf`
 
-Aggiungiamo il seguente task `prod:build` all'interno del `package.json`:
+Aggiungiamo il seguente task `prod:build` ai nostri `scripts`:
 
 ```json
 "prod:build": "rimraf lib && babel src -d lib --ignore .test.js",
