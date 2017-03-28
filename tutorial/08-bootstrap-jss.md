@@ -1,43 +1,43 @@
-# 08 - Bootstrap and JSS
+# 08 - Bootstrap e JSS
 
-Code for this chapter available in the [`master-no-services`](https://github.com/verekia/js-stack-boilerplate/tree/master-no-services) branch of the [JS-Stack-Boilerplate repository](https://github.com/verekia/js-stack-boilerplate).
+Il codice di questo capitolo è disponibile nel branch [`master-no-services`](https://github.com/verekia/js-stack-boilerplate/tree/master-no-services) del repository [JS-Stack-Boilerplate](https://github.com/verekia/js-stack-boilerplate).
 
-Alright! It's time to give our ugly app a facelift. We are going to use Twitter Bootstrap to give it some base styles. We'll then add a CSS-in-JS library to add some custom styles.
+Ok! È arrivata l'ora di fare qualche ritocco estetico alla nostra app bruttina. Utilizzeremo Twitter Bootstrap per dargli qualche stile di base. Successivamente tramite una libreria CSS-in-JS aggiungeremo qualche stile personalizzato.
 
 ## Twitter Bootstrap
 
-> 💡 **[Twitter Bootstrap](http://getbootstrap.com/)** is a library of UI components.
+> 💡 **[Twitter Bootstrap](http://getbootstrap.com/)** è una libreria di componenti per UI.
 
-There are 2 options to integrate Bootstrap in a React app. Both have their pros and cons:
+Ci sono 2 possibilità per integrare Bootstrap in un'app React. Entrambe hanno dei pro e dei contro:
 
-- Using the official release, **which uses jQuery and Tether** for the behavior of its components.
-- Using a third-party library that re-implements all of Bootstrap's components in React, like [React-Bootstrap](https://react-bootstrap.github.io/) or [Reactstrap](https://reactstrap.github.io/).
+- Utilizzando la versione ufficiale, **che usa jQuery e Tether** per il comportamento dei suoi componenti.
+- Utilizzando una libreria di terze parti ch re-implementa tutti i componenti di Bootstrap in React, come [React-Bootstrap](https://react-bootstrap.github.io/) oppure [Reactstrap](https://reactstrap.github.io/).
 
-Third-party libraries provide very convenient React components that dramatically reduce the code bloat compared to the official HTML components, and integrate greatly with your React codebase. That being said, I must say that I am quite reluctant to use them, because they will always be *behind* the official releases (sometimes potentially far behind). They also won't work with Bootstrap themes that implement their own JS. That's a pretty tough drawback considering that one major strength of Bootstrap is its huge community of designers who make beautiful themes.
+Le librerie terze forniscono dei component React molto comodi che riducono notevolmente il codice inutile rispetto ai componenti HTML originali, e si integrano in modo ottimale con il tuo codebase React. Detto ciò, devo dire che io sono abbastanza restio ad utilizzarle, perchè saranno sempre *indietro* rispetto alle versioni ufficiali (a volte potenzialmente molto indietro). Inoltre non funzionano con i temi Bootstrap che implementano le loro funzionalità JS. Questo è uno svantaggio abbastanza pesante considerando che uno dei maggiori punti di fornza di Bootstrap è la sua grande comunità di designer che costruiscono degli ottimi temi.
 
-For this reason, I'm going to make the tradeoff of integrating the official release, alongside with jQuery and Tether. One of the concerns of this approach is the file size of our bundle of course. For your information, the bundle weights about 200KB (Gzipped) with jQuery, Tether, and Bootstrap's JS included. I think that's reasonable, but if that's too much for you, you should probably consider an other option for Bootstrap, or even not using Bootstrap at all.
+Per questa ragione, percorrerò la strada di integrare la versione ufficiale, insieme a jQuery e Tether. Una delle preoccupazioni di questo approccio riguarda ovviamente la dimensione dei file risultanti. Per tua informazione, il bundle occupa circa 200KB (Gzip) con jQuery, Tether, ed i JS di Bootstrap inclusi. Penso che sia ragionevole, ma se per te è troppo, ti conviene considerare le altre opzioni per integrare Bootstrap, o addirittura non utilizzare proprio Bootstrap.
 
-### Bootstrap's CSS
+### I CSS di Bootstrap
 
-- Delete `public/css/style.css`
+- Cancella `public/css/style.css`
 
-- Run `yarn add bootstrap@4.0.0-alpha.6`
+- Esegui `yarn add bootstrap@4.0.0-alpha.6`
 
-- Copy `bootstrap.min.css` and `bootstrap.min.css.map` from `node_modules/bootstrap/dist/css` to your `public/css` folder.
+- Copia `bootstrap.min.css` e `bootstrap.min.css.map` da `node_modules/bootstrap/dist/css` nella tua cartella `public/css`.
 
-- Edit `src/server/render-app.jsx` like so:
+- Modifica `src/server/render-app.jsx` in questo modo:
 
 ```html
 <link rel="stylesheet" href="${STATIC_PATH}/css/bootstrap.min.css">
 ```
 
-### Bootstrap's JS with jQuery and Tether
+### I JS di Bootstrap con jQuery e Tether
 
-Now that we have Bootstrap's styles loaded on our page, we need the JavaScript behavior for the components.
+Adesso che abbiamo gli stili di Bootstrap caricati nella nostra pagina, abbiamo bisogno dei JavaScript per il comportamento dei componenti.
 
-- Run `yarn add jquery tether`
+- Esegui `yarn add jquery tether`
 
-- Edit `src/client/index.jsx` like so:
+- Modifica `src/client/index.jsx` in questo modo:
 
 ```js
 import $ from 'jquery'
@@ -50,13 +50,13 @@ window.Tether = Tether
 require('bootstrap')
 ```
 
-That will load Bootstrap's JavaScript code.
+Questo caricherà il codice Javascript di Bootstrap.
 
-### Bootstrap Components
+### I componenti di Bootstrap
 
-Alright, it's time for you to copy-paste a whole bunch of files.
+Bene, è arrivato il momento di fare il copia-incolla di un sacco di file.
 
-- Edit `src/shared/component/page/hello-async.jsx` like so:
+- Modifica `src/shared/component/page/hello-async.jsx` in questo modo:
 
 ```js
 // @flow
@@ -124,7 +124,7 @@ const HelloPage = () =>
 export default HelloPage
 ```
 
-- Edit `src/shared/component/page/home.jsx` like so:
+- Modifica `src/shared/component/page/home.jsx` in questo modo:
 
 ```js
 // @flow
@@ -171,7 +171,7 @@ const HomePage = () =>
 export default HomePage
 ```
 
-- Edit `src/shared/component/page/not-found.jsx` like so:
+- Modifica `src/shared/component/page/not-found.jsx` in questo modo:
 
 ```js
 // @flow
@@ -197,7 +197,7 @@ const NotFoundPage = () =>
 export default NotFoundPage
 ```
 
-- Edit `src/shared/component/button.jsx` like so:
+- Modifica `src/shared/component/button.jsx` in questo modo:
 
 ```js
 // [...]
@@ -210,7 +210,7 @@ export default NotFoundPage
 // [...]
 ```
 
-- Create a `src/shared/component/footer.jsx` file containing:
+- Crea il file `src/shared/component/footer.jsx` contenente:
 
 ```js
 // @flow
@@ -229,7 +229,7 @@ const Footer = () =>
 export default Footer
 ```
 
-- Create a `src/shared/component/modal-example.jsx` containing:
+- Crea il file `src/shared/component/modal-example.jsx` contenente:
 
 ```js
 // @flow
@@ -257,18 +257,18 @@ const ModalExample = () =>
 export default ModalExample
 ```
 
-- Edit `src/shared/app.jsx` like so:
+- Modifica `src/shared/app.jsx` in questo modo:
 
 ```js
 const App = () =>
   <div style={{ paddingTop: 54 }}>
 ```
 
-This is an example of a *React inline style*.
+Questo è un esempio di *stile React inline*.
 
-This will translate into: `<div style="padding-top:54px;">` in your DOM. We need this style to push the content under the navigation bar, but that's what's important here. [React inline styles](https://speakerdeck.com/vjeux/react-css-in-js) are a great way to isolate your component's styles from the global CSS namespace, but it comes at a price: You cannot use some native CSS features like `:hover`, Media Queries, animations, or `font-face`. That's [one of the reasons](https://github.com/cssinjs/jss/blob/master/docs/benefits.md#compared-to-inline-styles) we're going to integrate a CSS-in-JS library, JSS, later in this chapter.
+Questo verrà convertito in: `<div style="padding-top:54px;">` nel DOM. Abbiamo bisogno di questo stile per spingere il contenuto sotto la barra di navigazione. Gli [stili React inline](https://speakerdeck.com/vjeux/react-css-in-js) sono un ottimo modo per isolare gli stili dei tuoi component dal namspace CSS globale, ma ha un costo: non puoi utilizzare alcune funzionalità native del CSS come `:hover`, le Media Queries, le animazioni, o `font-face`. Questa è [una delle ragioni](https://github.com/cssinjs/jss/blob/master/docs/benefits.md#compared-to-inline-styles) per cui integreremo la libreria CSS-in-JS, JSS, più avanti in questo capitolo.
 
-- Edit `src/shared/component/nav.jsx` like so:
+- Modifica `src/shared/component/nav.jsx` in questo modo:
 
 ```js
 // @flow
@@ -314,7 +314,7 @@ const Nav = () =>
 export default Nav
 ```
 
-There is something new here, `handleNavLinkClick`. One issue I encountered using Bootstrap's `navbar` in an SPA is that clicking on a link on mobile does not collapse the menu, and does not scroll back to the top of the page. This is a great opportunity to show you an example of how you would integrate some jQuery / Bootstrap-specific code in your app:
+Qua abbiamo qualcosa di nuovo, `handleNavLinkClick`. Un problema che ho riscontrato utilizzando la `navbar` di Bootstrap's in una SPA è che cliccando su un link via mobile non richiude il menu, e non ritorna in cima alla pagina. Questa è una buona opportunità per fare un esempio di come puoi integrare del codice jQuery / specifico per Bootstrap nella tua app:
 
 ```js
 import $ from 'jquery'
@@ -328,11 +328,11 @@ const handleNavLinkClick = () => {
 <NavLink /* [...] */ onClick={handleNavLinkClick}>
 ```
 
-**Note**: I've removed accessibility-related attributes (like `aria` attributes) to make the code more readable *in the context of this tutorial*. **You should absolutely put them back**. Refer to Bootstrap's documentation and code samples to see how to use them.
+**Note**: ho rimosso gli attributi di accessibilità (come gli attributi `aria`) per rendere il codice più leggibile *inel contesto di questo tutorial*. **Dovresti assolutamente reintegrarli**. Fai riferimento alla documentazione di Bootstrap ed agli esempi di codice per impararne il funzionamento.
 
-🏁 Your app should now be entirely styled with Bootstrap.
+🏁 La tua app dovrebbe adesso essere completamente stilizzata tramite Bootstrap.
 
-## The current state of CSS
+## Lo stato attuale di CSS
 
 In 2016, the typical modern JavaScript stack settled. The different libraries and tools this tutorial made you set up are pretty much the *cutting-edge industry standard* (*cough – even though it could become completely outdated in a year from now – cough*). Yes, that's a complex stack to set up, but at least, most front-end devs agree that React-Redux-Webpack is the way to go. Now regarding CSS, I have some pretty bad news. Nothing settled, there is no standard way to go, no standard stack.
 
