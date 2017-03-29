@@ -334,25 +334,25 @@ const handleNavLinkClick = () => {
 
 ## Lo stato attuale di CSS
 
-In 2016, the typical modern JavaScript stack settled. The different libraries and tools this tutorial made you set up are pretty much the *cutting-edge industry standard* (*cough – even though it could become completely outdated in a year from now – cough*). Yes, that's a complex stack to set up, but at least, most front-end devs agree that React-Redux-Webpack is the way to go. Now regarding CSS, I have some pretty bad news. Nothing settled, there is no standard way to go, no standard stack.
+Nel 2016, il tipico stack JavaScript si è stabilizzato. Le librerie ed i tool utilizzati in questo tutorial sono di fatto *gli standard più avanzati* (*cough – anche se questo potrebbe diventare superato da qui ad un anno – cough*). Si, è uno stack complesso da configurare, ma la maggiorparte degli sviluppatori front-end concordano che React-Redux-Webpack sia la strada da percorrere. Riguardo al CSS, ho alcune brutte notizie. Non c'è niente di definitivo, nessuno stack standard.
 
-SASS, BEM, SMACSS, SUIT, Bass CSS, React Inline Styles, LESS, Styled Components, CSSX, JSS, Radium, Web Components, CSS Modules, OOCSS, Tachyons, Stylus, Atomic CSS, PostCSS, Aphrodite, React Native for Web, and many more that I forget are all different approaches or tools to get the job done. They all do it well, which is the problem, there is no clear winner, it's a big mess.
+SASS, BEM, SMACSS, SUIT, Bass CSS, React Inline Styles, LESS, Styled Components, CSSX, JSS, Radium, Web Components, CSS Modules, OOCSS, Tachyons, Stylus, Atomic CSS, PostCSS, Aphrodite, React Native for Web, e molti altri che non ho citato sono tutti approcci differenti o tool per fare lo stesso lavoro. Tutti lo fanno bene, e questo è il problema, non esiste un vincitore univoco, è tutto molto confuso.
 
-The cool React kids tend to favor React inline styles, CSS-in-JS, or CSS Modules approaches though, since they integrate really well with React and solve programmatically many [issues](https://speakerdeck.com/vjeux/react-css-in-js) that regular CSS approaches struggle with.
+Gli sviluppatori React "alla moda", tendono a favorire gli stili React inline, CSS-in-JS, o approcci CSS modulari, siccome si integrano molto bene con React e risolvono molti [problemi](https://speakerdeck.com/vjeux/react-css-in-js) che vengono riscontrati con i CSS regolari.
 
-CSS Modules work well, but they don't leverage the power of JavaScript and its many features over CSS. They just provide encapsulation, which is fine, but React inline styles and CSS-in-JS take styling to an other level in my opinion. My personal suggestion would be to use React inline styles for common styles (that's also what you have to use for React Native), and use a CSS-in-JS library for things like `:hover` and media queries.
+I moduli CSS Modules funzionano bene, ma non sfruttano il potere di JavaScript e tutte le sue funzionalità riguardo CSS. Forniscono solo l'incapsulamento, che va bene, ma gli stili React inline e CSS-in-JS portano l'utilizzo degli stili ad un altro livello secondo me. Il mio suggerimento personale è di utilizzare gli stili React inline per gli stili comuni (devi usarli anche per React Native), e usare una libreria CSS-in-JS per cose come `:hover` e le media queries.
 
-There are [tons of CSS-in-JS libraries](https://github.com/MicheleBertoli/css-in-js). JSS is a full-featured, well-rounded, and [performant](https://github.com/cssinjs/jss/blob/master/docs/performance.md) one.
+Esistono [numerose librerie CSS-in-JS](https://github.com/MicheleBertoli/css-in-js). JSS è una di quelle più complete e [performanti](https://github.com/cssinjs/jss/blob/master/docs/performance.md).
 
 ## JSS
 
-> 💡 **[JSS](http://cssinjs.org/)** is a CSS-in-JS library to write your styles in JavaScript and inject them into your app.
+> 💡 **[JSS](http://cssinjs.org/)** è una libreria di tipo CSS-in-JS per scrivere i tuoi stili in JavaScript ed iniettarli nella tua app.
 
-Now that we have some base template with Bootstrap, let's write some custom CSS. I mentioned earlier that React inline styles could not handle `:hover` and media queries, so we'll show a simple example of this on the homepage using JSS. JSS can be used via `react-jss`, a library that is convenient to use with React components.
+Adesso che abbiamo qualche template di base con Bootstrap, scriviamo qualche CSS personalizzato. Ho affermato in precedenza che gli stili React inline non supportano `:hover` e le media queries, vediamo un semplice esempio utilizzando JSS. JSS può essere utilizzato tramite `react-jss`, una libreria comoda da utilizzare con i component di React.
 
-- Run `yarn add react-jss`
+- Esegui `yarn add react-jss`
 
-Add the following to your `.flowconfig` file, as there is currently a Flow [issue](https://github.com/cssinjs/jss/issues/411) with JSS:
+Aggiungi quanto segue al file `.flowconfig` perchè attualmente c'è un [problema](https://github.com/cssinjs/jss/issues/411) con Flow e JSS:
 
 ```flowconfig
 [ignore]
@@ -361,16 +361,16 @@ Add the following to your `.flowconfig` file, as there is currently a Flow [issu
 
 ### Server-side
 
-JSS can render styles on the server for the initial rendering.
+JSS può effettuare il render degli stili lato server per il rendering iniziale.
 
-- Add the following constants to `src/shared/config.js`:
+- Aggiungi le seguenti costanti in `src/shared/config.js`:
 
 ```js
 export const JSS_SSR_CLASS = 'jss-ssr'
 export const JSS_SSR_SELECTOR = `.${JSS_SSR_CLASS}`
 ```
 
-- Edit `src/server/render-app.jsx` like so:
+- Modifica `src/server/render-app.jsx` in questo modo:
 
 ```js
 import { SheetsRegistry, SheetsRegistryProvider } from 'react-jss'
@@ -396,9 +396,9 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
 
 ## Client-side
 
-The first thing the client should do after rendering the app client-side, is to get rid of the server-generated JSS styles.
+La prima cosa che il client dovrebbe fare dopo il rendering dell'app lato client, è di rimuovere gli stili JSS generati dal server.
 
-- Add the following to `src/client/index.jsx` after the `ReactDOM.render` calls (before `setUpSocket(store)` for instance):
+- Aggiungi quanto segue a `src/client/index.jsx` dopo le chiamate `ReactDOM.render` (ad esempio prima di `setUpSocket(store)`):
 
 ```js
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
@@ -411,7 +411,7 @@ jssServerSide.parentNode.removeChild(jssServerSide)
 setUpSocket(store)
 ```
 
-Edit `src/shared/component/page/home.jsx` like so:
+Modifica `src/shared/component/page/home.jsx` in questo modo:
 
 ```js
 import injectSheet from 'react-jss'
@@ -446,14 +446,14 @@ const HomePage = ({ classes }: { classes: Object }) =>
 export default injectSheet(styles)(HomePage)
 ```
 
-Unlike React inline styles, JSS uses classes. You pass styles to `injectSheet` and the CSS classes end up in the props of your component.
+A differenza degli stili React inline, JSS utilizza le classi. Devi passare gli stili a `injectSheet` e le classi CSS finiscono nelle props del tuo component.
 
-🏁 Run `yarn start` and `yarn dev:wds`. Open the homepage. Show the source of the page (not in the inspector) to see that the JSS styles are present in the DOM at the initial render in the `<style class="jss-ssr">` element (only on the Home page). They should be gone in the inspector, replaced by `<style type="text/css" data-jss data-meta="HomePage">`.
+🏁 Esegui `yarn start` e `yarn dev:wds`. Apri la homepage. Visualizza il sorgente della pagina (non nell'inspector) per vedere che gli stili JSS sono presenti nel DOM nel render iniziale all'interno dell'elemento `<style class="jss-ssr">` (solo nella Home page). Dovrebbero essere scomparsi nell'inspector, sostituiti da `<style type="text/css" data-jss data-meta="HomePage">`.
 
-**Note**: In production mode, the `data-meta` is obfuscated. Sweet!
+**Nota**: In modalità produzione, il `data-meta` è offuscato. Ottimo!
 
-If you hover over the "Hover me" label, it should turn red. If you resize your browser window to be narrower than 800px, the "Resize your window" label should turn red. The green button is extending Bootstrap's CSS classes using JSS' `composes` property.
+Se sposti il puntatore sopra all'etichetta "Hover me", dovrebbe diventare rossa. Se ridimensioni la finestra del browser per essere più stretta di 800px, l'etichetta "Resize your window" diventa rossa. Il bottone verde estende le classi CSS di Bootstrap usando la proprietà `composes` di JSS.
 
-Next section: [09 - Travis, Coveralls, Heroku](09-travis-coveralls-heroku.md#readme)
+Prossimo capitolo: [09 - Travis, Coveralls, Heroku](09-travis-coveralls-heroku.md#readme)
 
-Back to the [previous section](07-socket-io.md#readme)  o all'[indice dei contenuti](https://github.com/fbertone/guida-javascript-moderno#indice-dei-contenuti).
+Torna al [capitolo precedente](07-socket-io.md#readme) o all'[indice dei contenuti](https://github.com/fbertone/guida-javascript-moderno#indice-dei-contenuti).
