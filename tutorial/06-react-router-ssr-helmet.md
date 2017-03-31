@@ -440,7 +440,7 @@ Ti ho volutamente fatto scrivere `FIX ME` per evidenziare il fatto che anche se 
 import Helmet from 'react-helmet'
 // [...]
 const renderApp = (/* [...] */) => {
-
+  // [...]
   const appHtml = ReactDOMServer.renderToString(/* [...] */)
   const head = Helmet.rewind()
 
