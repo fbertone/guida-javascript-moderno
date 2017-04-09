@@ -64,6 +64,9 @@ Se vuoi aggiungere la tua traduzione, leggi le [raccomandazioni](/how-to-transla
 
 Presto nuove traduzioni ;)
 
+- [Italian](https://github.com/fbertone/guida-javascript-moderno) by [Fabrizio Bertone](https://github.com/fbertone) - [fbertone.it](http://fbertone.it)
+- [Simplified Chinese](https://github.com/yepbug/js-stack-from-scratch/) by [@yepbug](https://github.com/yepbug)
+
 Controlla le [traduzioni in corso](https://github.com/verekia/js-stack-from-scratch/issues/147).
 
 ### V1
