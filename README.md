@@ -64,6 +64,7 @@ Se vuoi aggiungere la tua traduzione, leggi le [raccomandazioni](/how-to-transla
 
 Presto nuove traduzioni ;)
 
+- [Bulgarian](https://github.com/mihailgaberov/js-stack-from-scratch) by [mihailgaberov](http://github.com/mihailgaberov)
 - [Italian](https://github.com/fbertone/guida-javascript-moderno) by [Fabrizio Bertone](https://github.com/fbertone) - [fbertone.it](http://fbertone.it)
 - [Simplified Chinese](https://github.com/yepbug/js-stack-from-scratch/) by [@yepbug](https://github.com/yepbug)
 
