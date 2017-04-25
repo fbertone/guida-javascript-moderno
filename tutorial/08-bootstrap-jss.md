@@ -15,7 +15,7 @@ Ci sono 2 possibilità per integrare Bootstrap in un'app React. Entrambe hanno d
 
 Le librerie terze forniscono dei component React molto comodi che riducono notevolmente il codice inutile rispetto ai componenti HTML originali, e si integrano in modo ottimale con il tuo codebase React. Detto ciò, devo dire che io sono abbastanza restio ad utilizzarle, perchè saranno sempre *indietro* rispetto alle versioni ufficiali (a volte potenzialmente molto indietro). Inoltre non funzionano con i temi Bootstrap che implementano le loro funzionalità JS. Questo è uno svantaggio abbastanza pesante considerando che uno dei maggiori punti di fornza di Bootstrap è la sua grande comunità di designer che costruiscono degli ottimi temi.
 
-Per questa ragione, percorrerò la strada di integrare la versione ufficiale, insieme a jQuery e Tether. Una delle preoccupazioni di questo approccio riguarda ovviamente la dimensione dei file risultanti. Per tua informazione, il bundle occupa circa 200KB (Gzip) con jQuery, Tether, ed i JS di Bootstrap inclusi. Penso che sia ragionevole, ma se per te è troppo, ti conviene considerare le altre opzioni per integrare Bootstrap, o addirittura non utilizzare proprio Bootstrap.
+Per questa ragione, utilizzerò il compromesso di integrare la versione ufficiale, insieme a jQuery e Tether. Una delle preoccupazioni di questo approccio riguarda ovviamente la dimensione dei file risultanti. Per tua informazione, il bundle occupa circa 200KB (Gzip) con jQuery, Tether, ed i JS di Bootstrap inclusi. Penso che sia ragionevole, ma se per te è troppo, ti conviene considerare le altre opzioni per integrare Bootstrap, o addirittura non utilizzare proprio Bootstrap.
 
 ### I CSS di Bootstrap
 
