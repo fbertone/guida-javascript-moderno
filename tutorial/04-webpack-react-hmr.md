@@ -241,6 +241,9 @@ entry: [
 devServer: {
   port: WDS_PORT,
   hot: true,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+  },
 },
 plugins: [
   new webpack.optimize.OccurrenceOrderPlugin(),
@@ -249,6 +252,8 @@ plugins: [
   new webpack.NoEmitOnErrorsPlugin(),
 ],
 ```
+
+La configurazione `headers` serve a consentire Cross-Origin Resource Sharing, che è necessario per HMR.
 
 - Modifica `src/client/index.jsx`:
 

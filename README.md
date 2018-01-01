@@ -32,7 +32,7 @@ Il codice completo è disponibile in questo repository: [JS-Stack-Boilerplate](h
 
 Funziona su Linux, macOS, e Windows.
 
-## Indice dei contenuti
+> **Nota**: Da quando questo tutorial è stato aggiornato a maggio 2017, alcune librerie hanno leggermente modificato le loro API. 95% del tutorial è ancora perfettamente valido, ma se riscontri dei problemi, assicurati di controllare gli [open issues](https://github.com/verekia/js-stack-from-scratch/issues?q=is%3Aopen+is%3Aissue+label%3Abug).
 
 [01 - Node, Yarn, `package.json`](/tutorial/01-node-yarn-package-json.md#readme)
 
@@ -65,18 +65,19 @@ Se vuoi aggiungere la tua traduzione, leggi le [raccomandazioni](/how-to-transla
 Presto nuove traduzioni ;)
 
 - [Bulgarian](https://github.com/mihailgaberov/js-stack-from-scratch) by [mihailgaberov](http://github.com/mihailgaberov)
+- [Chinese (simplified)](https://github.com/yepbug/js-stack-from-scratch/) by [@yepbug](https://github.com/yepbug)
+- [French](https://github.com/naomihauret/js-stack-from-scratch/) by [Naomi Hauret](https://twitter.com/naomihauret)
 - [Italian](https://github.com/fbertone/guida-javascript-moderno) by [Fabrizio Bertone](https://github.com/fbertone) - [fbertone.it](http://fbertone.it)
-- [Simplified Chinese](https://github.com/yepbug/js-stack-from-scratch/) by [@yepbug](https://github.com/yepbug)
 
 Controlla le [traduzioni in corso](https://github.com/verekia/js-stack-from-scratch/issues/147).
 
 ### V1
 
-- [中文](https://github.com/pd4d10/js-stack-from-scratch) by [@pd4d10](http://github.com/pd4d10)
-- [Italiano](https://github.com/fbertone/js-stack-from-scratch) by [Fabrizio Bertone](https://github.com/fbertone)
-- [日本語](https://github.com/takahashim/js-stack-from-scratch) by [@takahashim](https://github.com/takahashim)
-- [Русский](https://github.com/UsulPro/js-stack-from-scratch) by [React Theming](https://github.com/sm-react/react-theming)
-- [ไทย](https://github.com/MicroBenz/js-stack-from-scratch) by [MicroBenz](https://github.com/MicroBenz)
+- [Chinese (simplified)](https://github.com/pd4d10/js-stack-from-scratch) by [@pd4d10](http://github.com/pd4d10)
+- [Italian](https://github.com/fbertone/js-stack-from-scratch) by [Fabrizio Bertone](https://github.com/fbertone)
+- [Japanese](https://github.com/takahashim/js-stack-from-scratch) by [@takahashim](https://github.com/takahashim)
+- [Russian](https://github.com/UsulPro/js-stack-from-scratch) by [React Theming](https://github.com/sm-react/react-theming)
+- [Thai](https://github.com/MicroBenz/js-stack-from-scratch) by [MicroBenz](https://github.com/MicroBenz)
 
 ## Credits
 

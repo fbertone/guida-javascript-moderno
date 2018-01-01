@@ -8,9 +8,7 @@ In questo capitolo creeremo delle pagine differenti per la nostra app e renderem
 
 > 💡 **[React Router](https://reacttraining.com/react-router/)** è una libreria per la navigazione fra le pagine dell'app React. Può essere utilizzara sia nel client che nel server.
 
-React Router ha avuto un grosso aggiornamento con la versione 4, che è ancora in beta. Siiccome voglio che questo tutorial sia aggiornato per il futuro, useremo la v4.
-
-- Esegui `yarn add react-router@next react-router-dom@next`
+- Esegui `yarn add react-router react-router-dom`
 
 Lato client, dobbiamo prima di tutto inserire la nostra app nel component `BrowserRouter`.
 
